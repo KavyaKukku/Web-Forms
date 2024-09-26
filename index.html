@@ -30,6 +30,42 @@
         <div id="errorMessages" class="error-messages"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+    function validateForm() {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const errorMessages = document.getElementById("errorMessages");
+
+    
+    errorMessages.innerHTML = "";
+
+    let errors = [];
+    if (!/^[A-Za-z ]+$/.test(name)) {
+        errors.push("Name must contain only letters and spaces.");
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errors.push("Please enter a valid email address.");
+    }
+    if (!/^\d{10}$/.test(phone)) {
+        errors.push("Phone number must be a 10-digit number.");
+    }
+    if (password.length < 6) {
+        errors.push("Password must be at least 6 characters long.");
+    }
+    if (password !== confirmPassword) {
+        errors.push("Passwords do not match.");
+    }
+    if (errors.length > 0) {
+        errorMessages.innerHTML = errors.join("<br>");
+        return false;
+    }
+
+    return true; 
+        }
+        
+    </script>
 </body>
 </html>
