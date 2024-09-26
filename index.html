@@ -3,55 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice Web Form</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="form-container">
-        <h2>Registration Form</h2>
+    <div class="container">
+        <h1>Registration Form</h1>
         <form id="registrationForm" onsubmit="return validateForm()">
-            <!-- Text input -->
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" placeholder="John Doe" required>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required pattern="[A-Za-z ]+" title="Only letters and spaces allowed">
 
-            <!-- Email input -->
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
 
-            <!-- Password input -->
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" minlength="8" placeholder="Password" required>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required pattern="\d{10}" title="Must be a 10-digit number">
 
-            <!-- Date input -->
-            <label for="dob">Date of Birth</label>
-            <input type="date" id="dob" name="dob" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required minlength="6">
 
-            <!-- Number input -->
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="1234567890" required>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required minlength="6">
 
-            <!-- Range input -->
-            <label for="experience">Years of Experience</label>
-            <input type="range" id="experience" name="experience" min="0" max="20" step="1" oninput="document.getElementById('expOutput').innerHTML = this.value">
-            <output id="expOutput">0</output> years
-
-            <!-- Select input -->
-            <label for="country">Country</label>
-            <select id="country" name="country" required>
-                <option value="" disabled selected>Select your country</option>
-                <option value="US">United States</option>
-                <option value="IN">India</option>
-                <option value="UK">United Kingdom</option>
-            </select>
-
-            <!-- Checkbox input -->
-            <label>
-                <input type="checkbox" name="terms" required> I accept the <a href="#">terms and conditions</a>.
-            </label>
-
-            <!-- Submit button -->
             <button type="submit">Register</button>
         </form>
+        <div id="errorMessages" class="error-messages"></div>
     </div>
 
     <script src="script.js"></script>
